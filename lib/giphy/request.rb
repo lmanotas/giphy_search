@@ -4,7 +4,6 @@ require 'net/http'
 module Giphy
   class Request
     API_URL = 'http://api.giphy.com/v1/gifs'
-    API_KEY = 'dc6zaTOxFJmzC'
 
     def get(endpoint, query_params = {})
       uri = URI("#{API_URL}#{endpoint}")
@@ -17,7 +16,7 @@ module Giphy
     end
 
     def api_key_param
-      { api_key: API_KEY }
+      { api_key: Giphy::Config.api_key }
     end
 
     def response
