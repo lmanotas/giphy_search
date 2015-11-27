@@ -1,6 +1,10 @@
 class GifsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    @gifs = current_user.gifs
+  end
+
   def search
     @tags = search_params[:q]
     @gifs = Giphy::Search.new.search(@tags)

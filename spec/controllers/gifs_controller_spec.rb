@@ -4,7 +4,7 @@ describe GifsController, type: :controller do
   signed_user
 
   context 'Search for gifs' do
-    subject{ post :search, search: { q: 'funny gifs' } }
+    subject{ xhr :post, :search, search: { q: 'funny gifs' } }
     stub_search_request
 
     it { expect(subject).to be_success }
@@ -13,8 +13,14 @@ describe GifsController, type: :controller do
   end
 
   context 'Save gif' do
-    subject { post :create, gif: { tags: 'funny, cat', gif_api_id: 'FiGiRei2ICzzG' } }
+    subject { xhr :post, :create, gif: { tags: 'funny, cat', gif_api_id: 'FiGiRei2ICzzG' } }
 
     it { expect{ subject }.to change(user.gifs, :count).by(1) }
+  end
+
+  context 'List saved gifs' do
+    subject { get :index }
+
+    it { expect(subject).to be_success }
   end
 end

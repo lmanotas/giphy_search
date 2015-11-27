@@ -1,0 +1,7 @@
+%ul
+  - @gifs.each do |gif|
+    %li{ id: gif.gif_api_id }
+      .image
+        %span= gif.gif_api_id
+      .tags
+        %span= gif.tags

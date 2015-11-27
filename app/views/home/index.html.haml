@@ -8,6 +8,9 @@
     - @gifs.each do |gif|
       %li{ id: "#{gif["id"]}" }
         .gif-content
-          %span= gif["id"]
+          = image_tag(gif["images"]["fixed_height"]["url"])
         .gif-save-option
-          = button_to "Save Gif", action: :create, params: { gif: { gif_api_id: gif["id"], tags: @tags } }
+          = form_for :gif, url: gifs_path, method: :post, remote: true do |form|
+            = form.hidden_field :gif_api_id, value: gif["id"]
+            = form.hidden_field :tags, value: @tags
+            = form.submit 'Save Gif'
