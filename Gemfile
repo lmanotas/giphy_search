@@ -13,11 +13,15 @@ gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
-  gem 'rspec-rails'
-  gem 'webmock'
 end
 
 group :development do
   gem 'web-console', '~> 2.0'
   gem 'spring'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'rspec-rails'
+  gem 'webmock'
 end

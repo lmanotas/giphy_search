@@ -1,0 +1,8 @@
+= form_for :search, url: search_gifs_path, method: :post do |form|
+  = form.search_field :q, id: 'search_gifs'
+  = form.submit 'Search'
+
+- if @gifs
+  %ul.gif-list
+    - @gifs.each do |gif|
+      %li= gif["id"]
