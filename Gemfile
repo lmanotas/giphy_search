@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'devise'
 gem 'haml-rails'
+gem 'bootstrap-sass'
 
 group :development, :test do
   gem 'byebug'
