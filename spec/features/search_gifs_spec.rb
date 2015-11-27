@@ -10,6 +10,7 @@ feature 'Search for gifs' do
       click_button 'Search'
 
       expect(page).to have_content('FiGiRei2ICzzG')
+      expect(page).to have_content('Gifs with tag(s): funny cat')
     end
   end
 end

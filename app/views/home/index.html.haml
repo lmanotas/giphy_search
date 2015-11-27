@@ -3,6 +3,7 @@
   = form.submit 'Search'
 
 - if @gifs
+  %p= "Gifs with tag(s): #{@tags}"
   %ul.gif-list
     - @gifs.each do |gif|
       %li= gif["id"]
