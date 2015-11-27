@@ -14,6 +14,7 @@ gem 'bootstrap-sass'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
+  gem 'webmock'
 end
 
 group :development do
