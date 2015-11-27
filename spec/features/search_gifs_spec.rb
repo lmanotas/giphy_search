@@ -4,7 +4,7 @@ feature 'Search for gifs' do
   context 'from root page, search for gifs and see the results' do
     stub_search_request
     
-    it do
+    scenario do
       visit '/'
       fill_in 'search_gifs', with: 'funny cat'
       click_button 'Search'

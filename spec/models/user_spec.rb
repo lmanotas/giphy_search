@@ -1,5 +1,8 @@
 require 'rails_helper'
 
 describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'Associations' do
+    # Checking if User has many Gifs
+    it { expect(subject.gifs).to be_empty }
+  end
 end

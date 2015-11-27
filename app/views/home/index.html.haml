@@ -6,4 +6,8 @@
   %p= "Gifs with tag(s): #{@tags}"
   %ul.gif-list
     - @gifs.each do |gif|
-      %li= gif["id"]
+      %li{ id: "#{gif["id"]}" }
+        .gif-content
+          %span= gif["id"]
+        .gif-save-option
+          = button_to "Save Gif", action: :create, params: { gif: { gif_api_id: gif["id"], tags: @tags } }
