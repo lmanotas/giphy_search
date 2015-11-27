@@ -1,8 +1,9 @@
 require 'rails_helper'
 
-feature 'Save gifs from list' do
+feature 'Save gifs from list', type: :feature do
 
    context 'seach for gifs and save favorites' do
+    signed_user
     stub_search_request
     
     scenario do

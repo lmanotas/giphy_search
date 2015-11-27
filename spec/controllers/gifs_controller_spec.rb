@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe GifsController, type: :controller do
+  signed_user
 
   context 'Search for gifs' do
     subject{ post :search, search: { q: 'funny gifs' } }
@@ -14,6 +15,6 @@ describe GifsController, type: :controller do
   context 'Save gif' do
     subject { post :create, gif: { tags: 'funny, cat', gif_api_id: 'FiGiRei2ICzzG' } }
 
-    it { expect{ subject }.to change(Gif, :count).by(1) }
+    it { expect{ subject }.to change(user.gifs, :count).by(1) }
   end
 end

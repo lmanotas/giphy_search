@@ -1,4 +1,6 @@
 class GifsController < ApplicationController
+  before_action :authenticate_user!
+
   def search
     @tags = search_params[:q]
     @gifs = Giphy::Search.new.search(@tags)
@@ -6,7 +8,9 @@ class GifsController < ApplicationController
   end
 
   def create
-    Gif.create(gifs_params)
+    Gif.create(
+      gifs_params.merge({ user: current_user })
+    )
     flash.now[:notice] = 'Gif saved on Database'
     render 'home/index'
   end

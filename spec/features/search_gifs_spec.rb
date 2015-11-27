@@ -1,7 +1,8 @@
 require 'rails_helper'
 
-feature 'Search for gifs' do
+feature 'Search for gifs', type: :feature do
   context 'from root page, search for gifs and see the results' do
+    signed_user
     stub_search_request
     
     scenario do
