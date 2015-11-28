@@ -16,3 +16,30 @@
 @import "bootstrap-sprockets";
 @import "bootstrap-tagsinput";
 @import "bootstrap";
+
+.container-narrow{
+  text-align: center;
+  width: 700px;
+  table{
+    text-align: left;
+  }
+}
+
+.masthead h3{
+  text-align: left;
+}
+.container{
+  .main{
+    margin-top: 40px;
+    .search-container{
+      margin-bottom: 20px;
+    }
+    .gif-list{
+      list-style: none;
+      padding: 0;
+      .gif-content {
+        margin: 40px;
+      }
+    }
+  } 
+}

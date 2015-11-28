@@ -11,7 +11,6 @@ feature 'Search for gifs', type: :feature do
       click_button 'Search'
 
       expect(page).to have_xpath("//ul/li[@id='FiGiRei2ICzzG']")
-      expect(page).to have_content('Gifs with tag(s): funny cat')
     end
   end
 end

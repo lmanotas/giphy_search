@@ -1,7 +1,7 @@
-%ul
+%ul.gif-list
   - @gifs.each do |gif|
     %li{ id: gif.gif_api_id }
-      .image
+      .gif-content
         = image_tag(gif.url)
-      .tags
+      .gif-save-option
         = text_field_tag :tags, gif.tags, data: { role: 'tagsinput' }, readonly: 'readonly'

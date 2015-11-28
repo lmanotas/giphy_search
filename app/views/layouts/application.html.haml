@@ -3,9 +3,20 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %title GiphySearch
-    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = stylesheet_link_tag    'application', media: 'all'
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = render 'shared/flashes'
-    = yield
+    .container.container-narrow
+      .masthead
+        %ul.nav.nav-pills.pull-right
+          %li
+            %a{ href: "/"} Home
+          %li
+            = link_to 'My Gifs', gifs_path
+          %li
+            %a{ href: "#"} Source Code
+        %h3.muted Giphy Search
+      .main
+        = render 'shared/flashes'
+        = yield

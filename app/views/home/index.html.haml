@@ -1,18 +1,20 @@
-= form_tag search_gifs_path, method: 'get', enforce_utf8: false do
-  = text_field_tag(:q, '', id: 'search_gifs')
-  = submit_tag 'Search', name: nil
-
-- if @gifs
-  %p= "Gifs with tag(s): #{@tags}"
-  %ul.gif-list
-    - @gifs.each do |gif|
-      %li{ id: "#{gif["id"]}" }
-        .gif-content
-          = image_tag(gif["images"]["fixed_height"]["url"])
-        .gif-save-option
-          = form_for :gif, url: gifs_path, method: :post, remote: true do |form|
-            = form.hidden_field :gif_api_id, value: gif["id"]
-            = form.hidden_field :url, value: gif["images"]["fixed_height"]["url"]
-            = form.label :tags, "Add Some Tags" 
-            = form.text_field :tags, value: @tags, data: { role: 'tagsinput' }
-            = form.submit 'Save Gif'
+.row.search-container
+  = form_tag search_gifs_path, method: 'get', enforce_utf8: false do
+    .col-6
+      .input-group
+        = text_field_tag(:q, '', id: 'search_gifs', class: 'form-control')
+        .input-group-btn
+          = submit_tag 'Search', name: nil, class: 'btn btn-primary'
+.row
+  - if @gifs
+    %ul.gif-list
+      - @gifs.each do |gif|
+        %li{ id: "#{gif["id"]}" }
+          .gif-content
+            = image_tag(gif["images"]["fixed_height_downsampled"]["url"])
+          .gif-save-option
+            = form_for :gif, url: gifs_path, method: :post, remote: true do |form|
+              = form.hidden_field :gif_api_id, value: gif["id"]
+              = form.hidden_field :url, value: gif["images"]["fixed_height_downsampled"]["url"]
+              = form.text_field :tags, value: @tags, data: { role: 'tagsinput' }
+              = form.submit 'Save Gif', class: "btn btn-primary"
