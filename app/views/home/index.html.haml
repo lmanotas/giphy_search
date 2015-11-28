@@ -1,6 +1,6 @@
-= form_for :search, url: search_gifs_path, method: :post do |form|
-  = form.search_field :q, id: 'search_gifs'
-  = form.submit 'Search'
+= form_tag search_gifs_path, method: 'get', enforce_utf8: false do
+  = text_field_tag(:q, '', id: 'search_gifs')
+  = submit_tag 'Search', name: nil
 
 - if @gifs
   %p= "Gifs with tag(s): #{@tags}"

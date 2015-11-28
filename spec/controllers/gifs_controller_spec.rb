@@ -4,7 +4,7 @@ describe GifsController, type: :controller do
   signed_user
 
   context 'Search for gifs' do
-    subject{ xhr :post, :search, search: { q: 'funny gifs' } }
+    subject{ get :search, q: 'funny gifs' }
     stub_search_request
 
     it { expect(subject).to be_success }

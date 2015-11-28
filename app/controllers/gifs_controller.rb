@@ -6,7 +6,7 @@ class GifsController < ApplicationController
   end
 
   def search
-    @tags = search_params[:q]
+    @tags = params[:q]
     @gifs = Giphy::Search.new.search(@tags)
     render 'home/index'
   end
@@ -20,10 +20,6 @@ class GifsController < ApplicationController
   end
 
   private
-  def search_params
-    params.require(:search).permit(:q)
-  end
-
   def create_gifs_params
     params.require(:gif).permit(:tags, :gif_api_id, :url).merge({ user: current_user })
   end
