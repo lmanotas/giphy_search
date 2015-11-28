@@ -13,5 +13,6 @@
           = form_for :gif, url: gifs_path, method: :post, remote: true do |form|
             = form.hidden_field :gif_api_id, value: gif["id"]
             = form.hidden_field :url, value: gif["images"]["fixed_height"]["url"]
-            = form.hidden_field :tags, value: @tags
+            = form.label :tags, "Add Some Tags" 
+            = form.text_field :tags, value: @tags, data: { role: 'tagsinput' }
             = form.submit 'Save Gif'

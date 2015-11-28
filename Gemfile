@@ -11,6 +11,10 @@ gem 'devise'
 gem 'haml-rails'
 gem 'bootstrap-sass'
 
+source 'https://rails-assets.org' do
+  gem 'rails-assets-bootstrap-tagsinput'
+end
+
 group :development, :test do
   gem 'byebug'
 end

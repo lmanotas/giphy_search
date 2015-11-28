@@ -4,4 +4,4 @@
       .image
         = image_tag(gif.url)
       .tags
-        %span= gif.tags
+        = text_field_tag :tags, gif.tags, data: { role: 'tagsinput' }, readonly: 'readonly'
