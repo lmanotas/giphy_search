@@ -13,7 +13,7 @@ describe GifsController, type: :controller do
   end
 
   context 'Save gif' do
-    subject { xhr :post, :create, gif: { tags: 'funny, cat', gif_api_id: 'FiGiRei2ICzzG' } }
+    subject { xhr :post, :create, gif: { tags: 'funny, cat', gif_api_id: 'FiGiRei2ICzzG', url: 'http://giphy/gif/url.gif' } }
 
     it { expect{ subject }.to change(user.gifs, :count).by(1) }
   end

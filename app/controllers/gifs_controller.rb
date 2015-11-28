@@ -12,10 +12,10 @@ class GifsController < ApplicationController
   end
 
   def create
-    Gif.create(
-      gifs_params.merge({ user: current_user })
-    )
-    flash.now[:notice] = 'Gif saved on Database'
+    gif = Gif.create(create_gifs_params)
+    if gif.persisted?
+      flash.now[:notice] = 'Gif saved on Database'
+    end
     render 'home/index'
   end
 
@@ -24,7 +24,7 @@ class GifsController < ApplicationController
     params.require(:search).permit(:q)
   end
 
-  def gifs_params
-    params.require(:gif).permit(:tags, :gif_api_id)
+  def create_gifs_params
+    params.require(:gif).permit(:tags, :gif_api_id, :url).merge({ user: current_user })
   end
 end

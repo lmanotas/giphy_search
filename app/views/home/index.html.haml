@@ -12,5 +12,6 @@
         .gif-save-option
           = form_for :gif, url: gifs_path, method: :post, remote: true do |form|
             = form.hidden_field :gif_api_id, value: gif["id"]
+            = form.hidden_field :url, value: gif["images"]["fixed_height"]["url"]
             = form.hidden_field :tags, value: @tags
             = form.submit 'Save Gif'
