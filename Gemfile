@@ -9,6 +9,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'bootstrap-sass'
+gem 'recursive-open-struct'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-bootstrap-tagsinput'

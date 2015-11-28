@@ -5,6 +5,11 @@ class GifsController < ApplicationController
     @gifs = current_user.gifs
   end
 
+  def show
+    @gif = Gif.find(params[:id])
+    @gif.complete_info
+  end
+
   def search
     @gifs = Giphy::Search.new.search(search_params)
     render 'home/index'

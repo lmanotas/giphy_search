@@ -12,6 +12,15 @@ describe GifsController, type: :controller do
     it { lambda{ expect_any_instance_of(Giphy::Search).to receive(:search).with('funny gifs') } }
   end
 
+  context 'Show' do
+    stub_gifs_request
+    
+    let(:gif){ create(:gif) }
+    subject{ get :show, id: gif.id }
+
+    it { expect(subject).to be_success }
+  end
+
   context 'Pagination on search action' do
     stub_search_request
 

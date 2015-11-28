@@ -5,3 +5,5 @@
         = image_tag(gif.url)
       .gif-save-option
         = text_field_tag :tags, gif.tags, data: { role: 'tagsinput' }, readonly: 'readonly'
+      .gif-more-info
+        = link_to 'More Info', gif_path(gif.id)

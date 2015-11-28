@@ -1,0 +1,12 @@
+.row
+  %h1 Gif Info
+.row
+  .more-info.panel.panel-default
+    .panel-heading
+      .image
+        = image_tag(@gif.url)
+    %table.table.table-striped.table-bordered
+      - ['id', 'url', 'bitly_gif_url', 'bitly_url', 'embed_url', 'username', 'source'].each do |field|
+        %tr
+          %th= field
+          %td= @gif.info[field]

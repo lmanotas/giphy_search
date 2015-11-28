@@ -20,4 +20,14 @@ describe Gif, type: :model do
     it { expect(subject).not_to be_valid }
   end
 
+  describe '#complete_info brings gif info from Giphy API and stores in info attr' do
+    subject{ create(:gif, gif_api_id: 'FiGiRei2ICzzG') }
+    stub_gifs_request
+
+    it do
+      subject.complete_info
+      expect(subject.info).not_to be_nil
+    end
+  end
+
 end

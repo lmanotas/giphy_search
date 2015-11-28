@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   get '/'  => 'home#index',   to: :root
   get '/search' => 'gifs#search',  as: :search_gifs
   
-  resources :gifs, only: [:create, :index]
+  resources :gifs, only: [:create, :index, :show]
 
 end
