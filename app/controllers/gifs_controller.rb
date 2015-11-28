@@ -6,7 +6,6 @@ class GifsController < ApplicationController
   end
 
   def search
-    @tags = search_params[:q]
     @gifs = Giphy::Search.new.search(search_params)
     render 'home/index'
   end
