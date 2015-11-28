@@ -1,11 +1,15 @@
 module Giphy
   class Search
-    def search(terms)
-      request.get('/search', { q: terms })
+    def search(options)
+      request.get('/search', options)
     end
 
     def request
-      Giphy::Request.new
+      @request ||= Giphy::Request.new
+    end
+
+    def pagination
+      request.pagination
     end
   end
 end

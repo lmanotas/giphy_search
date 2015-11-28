@@ -10,14 +10,20 @@ module Giphy
 
     # Defining a general GET method to hit a particular endpoint 
 
+    attr_reader :pagination
+
     def get(endpoint, query_params = {})
       # building the complete URL using the API_URL, the endpoint action and some query_params
       # the api_key param is merged here and passed in the query_params
       uri = URI("#{API_URL}#{endpoint}")
-      uri.query = URI.encode_www_form(query_params.merge!(api_key_param))
+      uri.query = query_params.merge(api_key_param).to_query
       # To handle the response, once the request is done then is processed by Giphy::Response
       # Will return the proper parsed object.
-      response.process(net.get_response(uri))
+      whole_response = response.process(net.get_response(uri))
+      # Storing pagination info.
+      @pagination = whole_response["pagination"]
+      # Returning the data body.
+      whole_response["data"]
     end
 
     def net
@@ -34,5 +40,6 @@ module Giphy
       # Returns the Response class to handle and process the returned response from the API
       Giphy::Response
     end
+
   end
 end
